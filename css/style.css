@@ -1,3 +1,52 @@
+#nav {
+  width:75px;
+  height:100%;
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:100;
+  background:#111;
+  color:#fff;
+  overflow:hidden;
+  white-space:nowrap;
+  font-family: "arial black";
+  font-size: 28px;
+}
+
+#nav ul {
+  margin:0;
+  padding:0;
+  width:200px;
+  margin-top:10px;
+  list-style:none;
+
+}
+
+#nav ul li {
+	font-family: "arial black";
+}
+
+#nav ul li span {
+	float: left;
+	width: 75px;
+  text-align: center;
+  white-space:nowrap;
+  padding: 0px;
+}
+
+#nav a {
+  color:#fff;
+  text-decoration:none;
+}
+
+#main {
+  float: left;
+  height: 100%;
+  width: 100%;
+  position:absolute;
+  padding-left: 75px;
+}
+
 body,
 div,
 ul,
@@ -18,10 +67,21 @@ h6 {
   overflow: auto;
 }
 
+#education,
+#workExperience,
+#projects,
+#skills {
+  padding-right: 4%
+}
+
 .education-entry,
 .work-entry,
 .project-entry {
-  padding: 0 5%;
+  padding: 0 4%;
+}
+
+.work-company {
+  /*insert company name style*/
 }
 
 h1 {
@@ -57,7 +117,7 @@ h2,
 h3,
 h4,
 h5 {
-  padding:10px 5%;
+  padding:10px 3%;
 
 }
 
@@ -67,7 +127,7 @@ h5 {
   font-size: 14px;
   color: #999;
   line-height: 16px;
-  float: left;
+  float: right;
 }
 
 .location-text {
@@ -88,8 +148,15 @@ p {
 a {
   color: #1199c3;
   text-decoration: none;
-  margin-top: 10px;
+  margin-top: 0px;
   display: block;
+  white-space: nowrap;
+}
+
+.position-text,
+.degree-text {
+  font-style: italic;
+  font-size: 14px;
 }
 
 .welcome-message {
@@ -117,9 +184,14 @@ a {
   color: #fff;
 }
 
+.skill-text {
+  font-size: 14px;
+  font-weight: bold;
+  color: #4a4a4a;;
+}
+
 .gray {
   background-color: #f3f3f3;
-  padding-bottom: 10px;
   clear:both;
 }
 
@@ -138,11 +210,11 @@ a {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  padding: 10px;
+  padding: 5px;
 }
 
 .center-content {
-  padding: 2.5% 5%;
+  padding: 1.5% 2%;
 }
 
 ul {
@@ -172,7 +244,7 @@ span {
 
 @media only screen and (max-width: 1024px) {
   #lets-connect {
-    margin-top: 5%;
+    /*margin-top: 5%;*/
   }
 }
 
@@ -184,7 +256,7 @@ span {
 
 @media only screen and (max-width: 750px) {
   #lets-connect {
-    margin-top: 10%;
+    /*margin-top: 10%;*/
   }
   .biopic {
     width: 150px;
