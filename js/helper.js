@@ -3,6 +3,7 @@ var HTMLheaderName = '<h1>%data%</h1>';
 var HTMLheaderRole = '<span>%data%</span>';
 
 var HTMLcontact = '<li class="flex-item"><img class="contact-icon" src="%icon%"><span class="contact-text">%value%</span></li>';
+var HTMLcontactLink = '<li class="flex-item"><a href="%link%"><img class="contact-icon" src="%icon%"><span class="contact-text">%value%</span></a></li>';
 
 var HTMLbioPic = '<img src="%data%" class="biopic">';
 var HTMLwelcomeMsg = '<span class="welcome-message">%data%</span>';
@@ -10,17 +11,17 @@ var HTMLwelcomeMsg = '<span class="welcome-message">%data%</span>';
 var HTMLskills = '<li class="flex-item"><img class="skill-icon" src="%icon%"><span class="skill-text">%data%</span></li>';
 
 var HTMLworkStart = '<div class="work-entry"></div>';
-var HTMLworkEmployerLink = '<div class="name-text"><a href="%link%">%data%</a></div>';
+var HTMLworkEmployerLink = '<div class="name-text" id="work-%id%"><a href="%link%">%data%</a></div>';
 var HTMLworkEmployer = '<div class="name-text">%data%</div>';
 var HTMLworkLocation = '<div class="location-text">%data%</div>';
 var HTMLworkTitle = '<div class="position-text">%data%</div>';
 var HTMLworkDates = '<div class="date-text">%data%</div></div>';
-var HTMLworkDescription = '<p>%data%</p>';
+var HTMLworkDescription = '<ul class="description-list">%data%</ul>';
 var HTMLworkList = '<li>%data%</li>';
 
 var HTMLprojectStart = '<div class="project-entry"></div>';
-var HTMLprojectTitle = '<div>%data%</div>';
-var HTMLprojectTitleLink = '<div><a href="%link%">%data%</a></div>';
+var HTMLprojectTitle = '<div class="name-text">%data%</div>';
+var HTMLprojectTitleLink = '<div class="name-text"><a href="%link%">%data%</a></div>';
 var HTMLprojectDates = '<div class="date-text">%data%</div>';
 var HTMLprojectDescription = '<p>%data%</p>';
 var HTMLprojectImage = '<img src="%data%">';

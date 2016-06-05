@@ -1,4 +1,6 @@
+var leftNav = {
 
+}
 
 var bio = {
   "name" : "Daniel Chang",
@@ -34,21 +36,25 @@ var bio = {
     {
       "type" : "email",
       "value" : "chang.daniel@gmail.com",
+      "link" : "mailto:chang.daniel@gmail.com?Subject=Let&#39s%20talk!",
       "icon" : "images/mail_24x24.png"
     },
     {
       "type" : "phone",
       "value" : "714 263 6819",
+      "link" : "",
       "icon" : "images/phone_24x24.png"
     },
     {
       "type" : "linkedin",
-      "value" : "ccc",
+      "value" : "linkedin.com/in/danielhchang",
+      "link" : "https://www.linkedin.com/in/danielhchang",
       "icon" : "images/linkedin_24x24.png"
     },
     {
       "type" : "github",
-      "value" : "cccddd",
+      "value" : "github.com/dan-h-ch",
+      "link" : "https://github.com/dan-h-ch",
       "icon" : "images/github_24x24.png"
     }
   ]
@@ -76,43 +82,43 @@ var projects = {
 var work = {
   "jobs" : [
     {
-      "title" : "Sr Live Ops Analyst",
+      "id" : 0,
+      "title" : "Sr Live Operations Analyst",
       "link" : "http://www.mz.com",
       "employer" : "Machine Zone",
       "dates" : "July 2014  to Mar 2016",
       "location" : "Palo Alto, CA",
-      "description" : "<ul>Guide and implement targeted events tool to optimize value and LTV of customer audience along with increase safety of operationGuide and implement targeted events tool to optimize value and LTV of customer audience along with increase safety of operationGuide and implement targeted events tool to optimize value and LTV of customer audience along with increase safety of operationGuide and implement targeted events tool to optimize value and LTV of customer audience along with increase safety of operationGuide and implement targeted events tool to optimize value and LTV of customer audience along with increase safety of operationGuide and implement targeted events tool to optimize value and LTV of customer audience along with increase safety of operationGuide and implement targeted events tool to optimize value and LTV of customer audience along with increase safety of operationGuide and implement targeted events tool to optimize value and LTV of customer audience along with increase safety of operation</ul>"
-      // [
-      //   "Guide and implement targeted events tool to optimize value and LTV of customer audience along with increase safety of operation",
-      //   "Establish post acquisition funnel to increase conversion rates and reduce time to step up conversion",
-      //   "Establish & lead a 24/7 live operations team tasked with maximizing hour by hour operations for top grossing mobile game, Game of War",
-      //   "Split test and analyze various events and sales to determine best action for driving specific KPI among specific customer audience"
-      // ]
+      "description" : [
+        "Guide and implement targeted events tool to optimize value and LTV of customer audience along with increase safety of operation",
+        "Establish post acquisition funnel to increase conversion rates and reduce time to step up conversion",
+        "Establish & lead a 24/7 live operations team tasked with maximizing hour by hour operations for top grossing mobile game, Game of War",
+        "Split test and analyze various events and sales to determine best action for driving specific KPI among specific customer audience"
+      ]
     },
     {
+      "id" : 1,
       "title" : "Country Manager",
       "link" : "http://www.gamigo.com",
       "employer" : "gamigo Inc",
       "dates" : "Mar 2013 to May 2014",
       "location" : "San Francisco, CA",
-      "description" : "adsfasdf"
-      // [
-      //   "Establish San Francisco office for gamigo Inc; including set up of lease agreement, office infrastructure, and HR policies",
-      //   "Oversee the product and team migration from Outspark to gamigo Inc post acquisition deal",
-      //   "Lead live ops team in improving customer lifetime value via retention and monetization activities"
-      // ]
+      "description" : [
+        "Establish San Francisco office for gamigo Inc; including set up of lease agreement, office infrastructure, and HR policies",
+        "Oversee the product and team migration from Outspark to gamigo Inc post acquisition deal",
+        "Lead live ops team in improving customer lifetime value via retention and monetization activities"
+      ]
     },
     {
-      "title" : "Director of Product & Sales",
+      "id" : 2,
+      "title" : "Director of Product Management & Sales Operation",
       "link" : "",
       "employer" : "Outspark Inc",
       "dates" : "Dec 2010 to Mar 2013",
       "location" : "San Francisco, CA",
-      "description" : "Plan, project lead, and bring into production automated CRM program to aimed at improving marketing funnel and lifetime value of customers <br> MySQL queries to evaluate marketing partner performance at multiple checkpoints along funnel"
-      // [
-      //   "Plan, project lead, and bring into production automated CRM program to aimed at improving marketing funnel and lifetime value of customers",
-      //   "MySQL queries to evaluate marketing partner performance at multiple checkpoints along funnel"
-      // ]
+      "description" : [
+        "Plan, project lead, and bring into production automated CRM program to aimed at improving marketing funnel and lifetime value of customers",
+        "SQL queries to evaluate marketing partner performance at multiple checkpoints along funnel"
+      ]
     }
   ]
 }
@@ -120,7 +126,7 @@ var work = {
 var education = {
   "schools" : [
     {
-      "name" : "University of California",
+      "name" : "University of California, Berkeley",
       "degree" : "B.A.",
       "major" : "Applied Mathematics",
       "dates" : "Aug 2000 to Dec 2004",
@@ -169,9 +175,15 @@ skills.display = function() {
 contacts.display = function() {
   if (bio.contacts.length > 0) {
     for (contact in bio.contacts) {
-      var formattedContact = HTMLcontact.replace("%type%", bio.contacts[contact].type);
-      formattedContact = formattedContact.replace("%icon%", bio.contacts[contact].icon);
-      formattedContact = formattedContact.replace("%value%", bio.contacts[contact].value);
+      if (bio.contacts[contact].link === "") {
+        var formattedContact = HTMLcontact.replace("%icon%", bio.contacts[contact].icon);
+        formattedContact = formattedContact.replace("%value%", bio.contacts[contact].value);
+      } else {
+        var formattedContact = HTMLcontactLink.replace("%icon%", bio.contacts[contact].icon);
+        formattedContact = formattedContact.replace("%value%", bio.contacts[contact].value);
+        formattedContact = formattedContact.replace("%link%", bio.contacts[contact].link);
+      }
+
       $("#contact-list").append(formattedContact);
     }
   }
@@ -211,20 +223,23 @@ education.display = function() {
 
 work.display = function() {
   for (job in work.jobs) {
+    // var formattedWorkStart = HTMLworkStart.replace("%id%", work.jobs[job].id)
     $("#workExperience").append(HTMLworkStart);
     if (work.jobs[job].link === "") {
-      var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+      var formattedEmployer = HTMLworkEmployer.replace("%id%", work.jobs[job].id);
+      formattedEmployer = formattedEmployer.replace("%data%", work.jobs[job].employer);
     } else {
-      var formattedEmployer = HTMLworkEmployerLink.replace("%link%", work.jobs[job].link).replace("%data%", work.jobs[job].employer);
+      var formattedEmployer = HTMLworkEmployerLink.replace("%id%", work.jobs[job].id);
+      formattedEmployer = formattedEmployer.replace("%link%", work.jobs[job].link).replace("%data%", work.jobs[job].employer);
     }
     var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
     var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
     var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
-    // var formattedList = ""
-    // for (var n = 0; n < work.jobs[job].description.length; n++) {
-    //   formattedList += HTMLworkList.replace("%data%",work.jobs[job].description[n]);
-    // }
-    var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+    var formattedList = ""
+    for (var n = 0; n < work.jobs[job].description.length; n++) {
+      formattedList += HTMLworkList.replace("%data%",work.jobs[job].description[n]);
+    }
+    var formattedDescription = HTMLworkDescription.replace("%data%", formattedList);
     var formattedEmployerTitle = formattedLocation + formattedEmployer + formattedDates + formattedTitle + formattedDescription;
     $(".work-entry:last").append(formattedEmployerTitle);
   };

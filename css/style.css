@@ -96,6 +96,14 @@ h6 {
   padding-left: 75px;
 }
 
+.description-list {
+  list-style : square;
+  padding-left : 20px;
+  font-size : 14px;
+  font-family: "Roboto", sans-serif;
+  color: #262216;
+}
+
 #top-gap,
 #bottom-gap {
   height: 20px;
@@ -114,7 +122,7 @@ h6 {
 .education-entry,
 .work-entry,
 .project-entry {
-  padding: 5px 7px 2px 25%;
+  padding: 3px 7px 6px 25%;
 }
 
 #skills-list,
@@ -188,10 +196,17 @@ a {
   white-space: nowrap;
 }
 
+.name-text {
+  font-weight: bold;
+  font-size: 18px;
+  color: #1199c3;
+}
+
 .position-text,
 .degree-text {
-  font-style: italic;
+  font-weight: bold;
   font-size: 14px;
+  padding: 3px 0 3px 0;
 }
 
 .welcome-message {
