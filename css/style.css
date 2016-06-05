@@ -1,16 +1,17 @@
 #nav {
   width:75px;
-  height:100%;
+  height:100vh;
   position:absolute;
   top:0;
   left:0;
+  bottom:40px;
   z-index:100;
-  background:#111;
+  background:#252839;
   color:#fff;
   overflow:hidden;
   white-space:nowrap;
   font-family: "arial black";
-  font-size: 28px;
+  font-size: 27px;
 }
 
 #nav ul {
@@ -44,7 +45,9 @@
   height: 100%;
   width: 100%;
   position:absolute;
-  padding-left: 75px;
+  left: 0px;
+  padding-left: 0%;
+  background-color: #252839;
 }
 
 body,
@@ -67,43 +70,76 @@ h6 {
   overflow: auto;
 }
 
+#header {
+  background-color: #b5b5b7;
+  width: 100%;
+  padding-left: 0px;
+
+}
+
+#lets-connect,
+#name {
+  padding: 5px 0 5px 25%;
+  color: #fff;
+  background-color: #f2b632;
+  color: #252839;
+  white-space: nowrap;
+}
+
 #education,
 #workExperience,
 #projects,
-#skills {
-  padding-right: 4%
+#skills,
+#contacts,
+#top-gap,
+#bottom-gap {
+  padding-left: 75px;
+}
+
+#top-gap,
+#bottom-gap {
+  height: 20px;
+  background-color: #252839;
+}
+
+
+.category-title {
+  background-color: #252839;
+  color: #fff;
+  padding-left: 75px;
+  white-space: nowrap;
+  overflow:hidden;
 }
 
 .education-entry,
 .work-entry,
 .project-entry {
-  padding: 0 4%;
+  padding: 5px 7px 2px 25%;
 }
 
-.work-company {
-  /*insert company name style*/
+#skills-list,
+#contact-list {
+  padding-left: 25%;
+  padding-bottom: 10px;
 }
 
 h1 {
   font-size: 40px;
-  color: #f5a623;
   line-height: 48px;
-  display: inline;
+  overflow:hidden;
 }
 
 h2 {
   font-weight: bold;
   font-size: 24px;
-  color: #999;
   line-height: 29px;
-  padding: 10px;
 }
 
 h3 {
-  font-style: italic;
+  font-weight: bold;
   font-size: 20px;
-  color: #000;
   line-height: 22px;
+  padding-left: 0px;
 }
 
 h4 {
@@ -113,11 +149,10 @@ h4 {
   line-height: 17px;
 }
 
-h2,
 h3,
 h4,
 h5 {
-  padding:10px 3%;
+  padding:5px 3% 2px 5px;
 
 }
 
@@ -125,7 +160,7 @@ h5 {
 .date-text {
   font-style: italic;
   font-size: 14px;
-  color: #999;
+  color: #262216;
   line-height: 16px;
   float: right;
 }
@@ -133,7 +168,7 @@ h5 {
 .location-text {
   font-style: italic;
   font-size: 14px;
-  color: #999;
+  color: #262216;
   line-height: 16px;
   float: right;
 
@@ -141,7 +176,7 @@ h5 {
 
 p {
   font-size: 14px;
-  color: #333;
+  color: #262216;
   line-height: 21px;
 }
 
@@ -184,24 +219,27 @@ a {
   color: #fff;
 }
 
-.skill-text {
+.skill-text,
+.contact-text {
   font-size: 14px;
   font-weight: bold;
-  color: #4a4a4a;;
+  color: #4a4a4a;
+}
+
+.contact-icon,
+.skill-icon {
+  padding: 0px 3px 0 0;
+  position:relative;
+  top: 6px;
+  height: 24px;
 }
 
 .gray {
-  background-color: #f3f3f3;
-  clear:both;
+  background-color: #b5b5b7;
 }
 
 .dark-gray {
-  background-color: #4a4a4a;
-}
-
-/* TODO: Replace with image later */
-#header {
-  background-color: #484848;
+  background-color: #677077;
 }
 
 .flex-box {
@@ -209,35 +247,28 @@ a {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 5px;
+  justify-content: space-between;
+  padding: 5px 15px 5px 0px;
+}
+
+.flex-item {
+  vertical-align: middle;
 }
 
 .center-content {
-  padding: 1.5% 2%;
+  padding: 6% 0px 1.5% 0%;
 }
 
 ul {
   list-style-type: none;
 }
 
-.biopic {
-  float: left;
-  padding: 10px;
-  width: 200px;
-  display: none;
-}
-
 img {
-  padding: 10px;
+  padding: 0px;
 }
 
 span {
   padding: 5px;
-}
-
-#lets-connect {
-  text-align: center;
 }
 
 /* Media queries to handle various device widths */
@@ -264,18 +295,6 @@ span {
   .welcome-message {
     display: none;
   }
-}
-
-#map {
-  display: block;
-  height: 100%;
-  margin: 0 5%;
-}
-
-#mapDiv {
-  height: 400px;
-  width: 100%;
-  padding-bottom: 5%;
 }
 
 @media only screen and (min-width: 750px) {

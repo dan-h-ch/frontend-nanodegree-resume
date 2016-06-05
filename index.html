@@ -22,60 +22,47 @@
   </div>
   <div id="main">
 
-    <div id="header" class="center-content clear-fix">
-      <ul id="topContacts" class="flex-box"></ul>
+    <div id="header">
+      <div id="top-gap">
+      </div>
+      <div id="name">
+      </div>
+      <div id="contacts" class="gray">
+        <ul id="contact-list" class="flex-box"></ul>
+      </div>
     </div>
     <div style="clear: both;"></div>
-    <div id="projects" class="gray">
-      <h2>Projects</h2>
+    <div class="category-title">
+      <h3>Projects</h3>
     </div>
-    <div id="education" >
-      <h2>Education</h2>
+    <div id="projects" class="dark-gray">
     </div>
-    <div id="workExperience" class="gray">
-      <h2>Work Experience</h2>
+    <div class="category-title">
+      <h3>Education</h3>
     </div>
-    <div id="skills-h2">
-      <h2>Skills</h2>
-      <ul id="skills" class="flex-box"></ul><br>
+    <div id="education" class="gray">
     </div>
-
-    <!-- <div id="mapDiv">
-      <h2>Where I've Lived and Worked</h2>
-    </div> -->
+    <div class="category-title">
+      <h3>Work Experience</h3>
+    </div>
+    <div id="workExperience" class="dark-gray">
+    </div>
+    <div class="category-title">
+      <h3>Skills</h3>
+    </div>
+    <div id="skills" class="gray">
+      <ul id="skills-list" class="flex-box"></ul>
+    </div>
     <div id="lets-connect" class="dark-gray">
-      <h2 class="orange center-text">Let's Connect</h2>
-        <ul id="footerContacts" class="flex-box">
-      </ul>
+      <h2>Email Me</h2>
+    </div>
+    <div id="bottom-gap">
     </div>
   </div>
 
   <script src="js/resumeBuilder.js"></script>
 
-
-  <!--
-  These scripts are written in JavaScript. You'll be breaking them down as part of
-  a quiz. Essentially, the next few lines are checking to see if you have not
-  changed each section of the resume. If you have not made any changes to a section
-  of the resume, then that part of the resume does not show up. More on this in the
-  course.
-  -->
-
   <script type="text/javascript">
-    // Notice how all of a sudden there's JavaScript inside this HTML
-    // document? You can write JavaScript between <script> tags. At the end of your
-    // JavaScript, don't forget the closing script tag with the slash (/).
-
-
-    // Also, this is a JavaScript style comment. You can comment in JavaScript with:
-
-    //   two slashes for all following characters on a single line, or
-
-    /*
-        an opening and closing set of slash asterisks for block comments.
-    */
-
-
     if(document.getElementsByClassName('flex-item').length === 0) {
       document.getElementById('topContacts').style.backgroundColor = 'black';
     }
@@ -94,9 +81,6 @@
     if(document.getElementsByClassName('flex-item').length === 0) {
       document.getElementById('lets-connect').style.backgroundColor = 'black';
     }
-    // if(document.getElementById('map') === null) {
-    //   document.getElementById('mapDiv').style.backgroundColor = 'black';
-    // }
   </script>
 </body>
 </html>
