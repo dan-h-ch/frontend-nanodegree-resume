@@ -20,7 +20,6 @@
   width:200px;
   margin-top:10px;
   list-style:none;
-
 }
 
 #nav ul li {
@@ -119,6 +118,26 @@ h6 {
   overflow:hidden;
 }
 
+.popup-description {
+  position: absolute;
+  display: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #252839;
+  color: #fff;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 11px;
+  white-space: wrap;
+}
+
+.top-row,
+#second-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .education-entry,
 .work-entry,
 .project-entry {
@@ -161,9 +180,7 @@ h3,
 h4,
 h5 {
   padding:5px 3% 2px 5px;
-
 }
-
 
 .date-text {
   font-style: italic;
@@ -171,6 +188,9 @@ h5 {
   color: #262216;
   line-height: 16px;
   float: right;
+  display: inline;
+  text-align: right;
+  white-space: nowrap;
 }
 
 .location-text {
@@ -179,20 +199,20 @@ h5 {
   color: #262216;
   line-height: 16px;
   float: right;
-
+  display: inline;
+  text-align: right;
 }
 
 p {
   font-size: 14px;
   color: #262216;
-  line-height: 21px;
 }
 
 a {
   color: #1199c3;
   text-decoration: none;
   margin-top: 0px;
-  display: block;
+  display: inline;
   white-space: nowrap;
 }
 
@@ -200,6 +220,7 @@ a {
   font-weight: bold;
   font-size: 18px;
   color: #1199c3;
+  display: inline;
 }
 
 .position-text,
@@ -207,6 +228,7 @@ a {
   font-weight: bold;
   font-size: 14px;
   padding: 3px 0 3px 0;
+  display: inline;
 }
 
 .welcome-message {
@@ -284,37 +306,4 @@ img {
 
 span {
   padding: 5px;
-}
-
-/* Media queries to handle various device widths */
-
-@media only screen and (max-width: 1024px) {
-  #lets-connect {
-    /*margin-top: 5%;*/
-  }
-}
-
-@media only screen and (max-width:900px) {
-  .biopic {
-    width: 175px;
-  }
-}
-
-@media only screen and (max-width: 750px) {
-  #lets-connect {
-    /*margin-top: 10%;*/
-  }
-  .biopic {
-    width: 150px;
-  }
-  .welcome-message {
-    display: none;
-  }
-}
-
-@media only screen and (min-width: 750px) {
-  #skills-h3,
-  .biopic {
-    display: block;
-  }
 }

@@ -1,5 +1,32 @@
 var leftNav = {
+  "nav": [
+    {
+      "number" : "00",
+      "text" : "Top",
+      "link" : "#main"
+    },
+    {
+      "number" : "01",
+      "text" : "Projects",
+      "link" : "#project-start"
+    },
+    {
+      "number" : "02",
+      "text" : "Education",
+      "link" : "#education-start"
+    },
+    {
+      "number" : "03",
+      "text" : "Experience",
+      "link" : "#experience-start"
+    },
+    {
+      "number" : "04",
+      "text" : "Email",
+      "link" : "mailto:chang.daniel@gmail.com?Subject=Let&#39s%20talk!"
+    }
 
+  ]
 }
 
 var bio = {
@@ -93,7 +120,8 @@ var work = {
         "Establish post acquisition funnel to increase conversion rates and reduce time to step up conversion",
         "Establish & lead a 24/7 live operations team tasked with maximizing hour by hour operations for top grossing mobile game, Game of War",
         "Split test and analyze various events and sales to determine best action for driving specific KPI among specific customer audience"
-      ]
+      ],
+      "popup" : "No 1 mobile game publisher of Game of War and Mobile Strike... click for more info."
     },
     {
       "id" : 1,
@@ -106,7 +134,8 @@ var work = {
         "Establish San Francisco office for gamigo Inc; including set up of lease agreement, office infrastructure, and HR policies",
         "Oversee the product and team migration from Outspark to gamigo Inc post acquisition deal",
         "Lead live ops team in improving customer lifetime value via retention and monetization activities"
-      ]
+      ],
+      "popup" : "US subsidiary of top German game publisher... click for more info."
     },
     {
       "id" : 2,
@@ -118,7 +147,8 @@ var work = {
       "description" : [
         "Plan, project lead, and bring into production automated CRM program to aimed at improving marketing funnel and lifetime value of customers",
         "SQL queries to evaluate marketing partner performance at multiple checkpoints along funnel"
-      ]
+      ],
+      "popup" : "Acquired by gamigo Inc Mar 2013."
     }
   ]
 }
@@ -161,6 +191,15 @@ var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 
 // $("#name").prepend(formattedRole);
 $("#name").prepend(formattedName);
+
+nav.display = function() {
+  for (item in leftNav.nav) {
+    var formattedNavItem = HTMLnavItem.replace("%num%", leftNav.nav[item].number);
+    formattedNavItem = formattedNavItem.replace("%text%", leftNav.nav[item].text);
+    formattedNavItem = formattedNavItem.replace("%link%", leftNav.nav[item].link);
+    $("#nav-list").append(formattedNavItem);
+  }
+}
 
 skills.display = function() {
   if (bio.skills.length > 0) {
@@ -216,22 +255,27 @@ education.display = function() {
       var formattedMajor = "";
     }
     var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
-    var formattedEducation = formattedDates + formattedName + formattedLocation + formattedDegree + formattedMajor;
-    $(".education-entry:last").append(formattedEducation);
+    var EducationTop = formattedName + formattedDates;
+    EducationTop = HTMLschoolTopRow.replace("%data%", EducationTop);
+    var EducationRest = formattedDegree + formattedMajor + formattedLocation;
+    EducationRest = HTMLschoolRest.replace("%data%", EducationRest)
+    var EducationAll = EducationTop + EducationRest;
+    $(".education-entry:last").append(EducationAll);
   }
 };
 
 work.display = function() {
   for (job in work.jobs) {
-    // var formattedWorkStart = HTMLworkStart.replace("%id%", work.jobs[job].id)
     $("#workExperience").append(HTMLworkStart);
+    var workId = "work-" + work.jobs[job].id
     if (work.jobs[job].link === "") {
-      var formattedEmployer = HTMLworkEmployer.replace("%id%", work.jobs[job].id);
+      var formattedEmployer = HTMLworkEmployer.replace("%workId%", workId);
       formattedEmployer = formattedEmployer.replace("%data%", work.jobs[job].employer);
     } else {
-      var formattedEmployer = HTMLworkEmployerLink.replace("%id%", work.jobs[job].id);
+      var formattedEmployer = HTMLworkEmployerLink.replace("%workId%", workId);
       formattedEmployer = formattedEmployer.replace("%link%", work.jobs[job].link).replace("%data%", work.jobs[job].employer);
     }
+    var formattedPopup = HTMLworkPopup.replace("%id%", work.jobs[job].id).replace("%data%", work.jobs[job].popup);
     var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
     var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
     var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
@@ -240,8 +284,17 @@ work.display = function() {
       formattedList += HTMLworkList.replace("%data%",work.jobs[job].description[n]);
     }
     var formattedDescription = HTMLworkDescription.replace("%data%", formattedList);
-    var formattedEmployerTitle = formattedLocation + formattedEmployer + formattedDates + formattedTitle + formattedDescription;
-    $(".work-entry:last").append(formattedEmployerTitle);
+    var workTopRow = formattedEmployer + formattedLocation;
+
+    workTopRow = HTMLworkTopRow.replace("%data%", workTopRow);
+    var workSecondRow = formattedTitle + formattedDates;
+    workSecondRow = HTMLworkSecondRow.replace("%data%", workSecondRow);
+    var workRest = formattedDescription;
+    workRest = HTMLworkRest.replace("%data%", workRest);
+    var workAll = workTopRow + workSecondRow + workRest;
+
+    $(".work-entry:last").append(workAll);
+    $("#" + workId).append(formattedPopup);
   };
 }
 
@@ -251,7 +304,7 @@ $(document).click(function(loc) {
   logClicks(x,y);
 });
 
-
+nav.display();
 education.display();
 projects.display();
 work.display();
